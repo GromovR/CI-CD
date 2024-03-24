@@ -1,0 +1,26 @@
+{
+  "name": "cypress-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:pets:chrome": "npx cypress run --record --spec \"cypress/e2e/adminLogin.cy.js\" --group pets:chrome --browser chrome",
+    "test:seats:chrome": "npx cypress run --record --spec \"cypress/e2e/pageDisplay.cy.js\" --group seats:chrome --browser chrome",
+    "test:parallel:chrome": "run-p -c test:pets:chrome test:seats:chrome",
+    "test:pets:msedge": "npx cypress run --record --spec \"cypress/e2e/adminLogin.cy.js\" --group pets:edge --browser edge",
+    "test:seats:msedge": "npx cypress run --record --spec \"cypress/e2e/pageDisplay.cy.js\" --group seats:edge --browser edge",
+    "test:parallel:msedge": "run-p -c test:pets:msedge test:seats:msedge",
+    "test:pets:electron": "npx cypress run --record --spec \"cypress/e2e/adminLogin.cy.js\" --group pets:electron --browser electron",
+    "test:seats:electron": "npx cypress run --record --spec \"cypress/e2e/pageDisplay.cy.js\" --group seats:electron --browser electron",
+    "test:parallel:electron": "run-p -c test:pets:electron test:seats:electron",
+    "test:parallel:all": "run-s -c test:parallel:chrome test:parallel:msedge test:parallel:electron",
+    "test:parallel:adlo": "run-s -c test:pets:chrome test:pets:msedge test:pets:electron",
+    "test:parallel:seats": "run-p -c test:seats:chrome test:pets:msedge test:seats:electron"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.7.1",
+    "npm-run-all": "^4.1.5"
+  }
+}
